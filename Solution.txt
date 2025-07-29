@@ -1,0 +1,31 @@
+static string[] num2 = { "a", "b", "c" }; static string[] num3 = { "d", "e", "f" }; static string[] num4 = { "g", "h", "i" };
+static string[] num5 = { "j", "k", "l" }; static string[] num6 = { "m", "n", "o" }; static string[] num7 = { "p", "q", "r", "s" };
+static string[] num8 = { "t", "u", "v" }; static string[] num9 = { "w", "x", "y", "z" }; static string[] backSpace = { "*", " " };
+/*this array colect arrays before */
+static Array[] nums = {num2,num3,num4,num5,num6,num7,num8,num9,backSpace };
+static string output="";
+
+public static String OldPhonePad(string input)
+{   
+    foreach (string[] dt in nums) //this foreach runs all arrays and compares their contents
+    {
+        if (dt.Contains(input))
+        {
+            output = output + input;
+            input = "";
+            if (dt.Contains("*"))
+            {
+                output.Remove(output.Length - 1, 1); //this line delete a space in case users press "*"
+            }
+            if (dt.Contains(" "))
+            {
+                output = output + " ";
+            }
+        }
+        if (!dt.Contains(input) && !dt.Contains(" ") && !dt.Contains("*"))
+        {
+            return output;
+        }
+    }            
+    return output; //return what users writed
+}
